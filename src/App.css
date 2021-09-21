@@ -1,38 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+:root {
+  --border-color: #9eadba;
+  --sidebar-color: #b2acfa;
+  --button-color: #6558f5;
+}
 .App {
-  text-align: center;
+  width: 100%;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  display: grid;
+  grid-template-columns: 0.5fr 15fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "sidebar main";
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--sidebar-color);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main {
+  grid-area: main;
+  margin: 1.5rem 0.5rem;
+  padding: 0.8rem;
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
+  border: 2px solid var(--border-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.4fr 2fr 2.5fr 0.5fr 2fr;
+  grid-template-areas:
+    "header header"
+    "options options"
+    "content-box-left content-box-right"
+    "advices-title advices-title"
+    "advices advices";
+  grid-gap: 0.5rem;
+  grid-column-gap: 3rem;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  grid-area: header;
+}
+.header .title {
+  margin: 0rem 0.5rem;
+  font-weight: bold;
+}
+.header .sub-title {
+  margin: -0.2rem 0.5rem;
+  color: var(--border-color);
+}
+.options {
+  grid-area: options;
+}
+.options-title {
+  margin: 0rem;
+}
+.opt-inline {
+  display: inline;
+  margin: 0.5rem;
+  font-weight: bold;
+}
+.hlight {
+  padding-bottom: 0.5rem;
+  color: var(--button-color);
+  border-bottom: 3px solid var(--button-color);
+}
+.options-clicked {
+  margin: 1.5rem 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid var(--border-color);
+}
+.options-clicked .header {
+  margin: 0rem 1rem 0rem 0rem;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.advisor {
+  display: grid;
+  grid-template-columns: 0.6fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "advisor-photo advisor-name"
+    "advisor-photo advisor-name";
+  align-items: center;
+}
+.advisor-photo {
+  grid-area: advisor-photo;
+  margin: auto;
+}
+.advisor-photo .circle {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #dadfe4;
+}
+.circle svg {
+  height: 100%;
+  display: block;
+  margin: auto;
+  color: var(--border-color);
+}
+.advisor-name {
+  grid-area: advisor-name;
+  font-size: 1rem;
+}
+.advisor-name .span {
+  margin-top: -0.3rem;
+  margin-left: 0.1rem;
+  color: var(--border-color);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.rating-follow {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "rating"
+    "follow";
+}
+.rating-follow .rating {
+  margin: 0rem auto;
+  color: var(--border-color);
+}
+.rating .checked {
+  color: var(--button-color);
+}
+.rating-follow .follow {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  font-size: 0.8rem;
   color: white;
+  background-color: var(--button-color);
 }
-
-.App-link {
-  color: #61dafb;
+.options-clicked .details {
+  margin: 1rem 0.5rem;
+  font-size: 0.8rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.content-box-left {
+  grid-area: content-box-left;
+  box-shadow: 2px 2px 5px var(--border-color);
+}
+.content-box-right {
+  grid-area: content-box-right;
+  box-shadow: 2px 2px 5px var(--border-color);
+}
+.advices-title {
+  grid-area: advices-title;
+  background-color: darkseagreen;
+}
+.advices {
+  grid-area: advices;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "advices-menu-block1 advices-menu-block2 advices-menu-block3";
+  grid-gap: 0.5rem;
+  grid-column-gap: 2rem;
+}
+.advices-menu-block1 {
+  grid-area: advices-menu-block1;
+  border: 2px solid var(--border-color);
+}
+.advices-menu-block2 {
+  grid-area: advices-menu-block2;
+  border: 2px solid var(--border-color);
+}
+.advices-menu-block3 {
+  grid-area: advices-menu-block3;
+  border: 2px solid var(--border-color);
+}
+@media only screen and (max-width: 550px) {
+  .App {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 25fr;
+    grid-template-areas:
+      "sidebar"
+      "main";
   }
-  to {
-    transform: rotate(360deg);
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 4fr 5fr 5fr 0.5fr 15fr;
+    grid-template-areas:
+      "header"
+      "options"
+      "content-box-left"
+      "content-box-right"
+      "advices-title"
+      "advices";
+  }
+  .advices {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "advices-menu-block1"
+      "advices-menu-block2"
+      "advices-menu-block3";
   }
 }
