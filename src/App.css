@@ -21,12 +21,12 @@
   grid-area: main;
   margin: 1.5rem 0.5rem;
   padding: 0.8rem;
-  padding-left: 1.5rem;
+  padding-left: 2rem;
   padding-right: 0.5rem;
   border: 2px solid var(--border-color);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.4fr 2fr 2.5fr 0.5fr 2fr;
+  grid-template-rows: 0.25fr 0.2fr 1fr 0.1fr 0.5fr;
   grid-template-areas:
     "header header"
     "options options"
@@ -102,13 +102,14 @@
 .advisor-name {
   grid-area: advisor-name;
   font-size: 1rem;
+  margin-left: 0.3rem;
 }
 .advisor-name .span {
   margin-top: -0.3rem;
   margin-left: 0.1rem;
-  color: var(--border-color);
+  /* color: var(--border-color); */
   font-size: 0.8rem;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .rating-follow {
   display: grid;
@@ -126,7 +127,8 @@
   color: var(--button-color);
 }
 .rating-follow .follow {
-  padding: 0.5rem 1.5rem;
+  margin-top: 0.2rem;
+  padding: 0.4rem 1.5rem;
   border: none;
   font-size: 0.8rem;
   color: white;
@@ -138,24 +140,49 @@
 }
 .content-box-left {
   grid-area: content-box-left;
+  border-radius: 5px;
   box-shadow: 2px 2px 5px var(--border-color);
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 0.2fr 0.1fr;
+  grid-template-areas:
+    "dropdown"
+    "doughnut"
+    "horizontal-bar";
+}
+.dropdown {
+  grid-area: dropdown;
+  text-align: right;
+}
+.dropdown-button {
+  box-shadow: 0 0 3px var(--border-color);
+}
+.doughnut {
+  grid-area: doughnut;
+}
+.horizontal-bar {
+  grid-area: horizontal-bar;
 }
 .content-box-right {
+  margin-right: 1.5rem;
   grid-area: content-box-right;
+  border-radius: 5px;
   box-shadow: 2px 2px 5px var(--border-color);
 }
 .advices-title {
   grid-area: advices-title;
-  background-color: darkseagreen;
+  margin: 0.5rem 0.5rem;
+  font-size: 1.1rem;
 }
 .advices {
   grid-area: advices;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 0.5fr;
   grid-template-areas: "advices-menu-block1 advices-menu-block2 advices-menu-block3";
   grid-gap: 0.5rem;
-  grid-column-gap: 2rem;
+  grid-column-gap: 1.5rem;
 }
 .advices-menu-block1 {
   grid-area: advices-menu-block1;
@@ -169,7 +196,68 @@
   grid-area: advices-menu-block3;
   border: 2px solid var(--border-color);
 }
-@media only screen and (max-width: 550px) {
+.advices-menu-block-in-css {
+  padding: 0.8rem;
+}
+.flex-1,
+.flex-3,
+.flex-4,
+.flex-5 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-1 .bank-nifty-trade {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.flex-1 .more-button {
+  /* content: "\f178"; */
+  padding: 0.5rem 1.5rem;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--button-color);
+}
+.flex-2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.flex-2 .entry {
+  margin: 0rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.05rem 0.6rem;
+  color: springgreen;
+  border: 2px solid springgreen;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.flex-2 .prediction {
+  margin: 0rem;
+  margin-top: 0.5rem;
+  padding: 0.05rem 0.6rem;
+  color: var(--button-color);
+  border: 2px solid var(--button-color);
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.flex-bottom-content .left-head {
+  margin: 0.3rem 0.5rem;
+  font-size: 1rem;
+}
+.flex-bottom-content .right-value {
+  margin: 0.3rem 0rem;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 1100px) {
   .App {
     height: auto;
     grid-template-columns: 1fr;
@@ -180,7 +268,7 @@
   }
   .main {
     grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 4fr 5fr 5fr 0.5fr 15fr;
+    grid-template-rows: 0.3fr 1.5fr 1.5fr 1.5fr 0.25fr 4fr;
     grid-template-areas:
       "header"
       "options"
@@ -188,6 +276,9 @@
       "content-box-right"
       "advices-title"
       "advices";
+  }
+  .content-box-right {
+    margin-right: 0rem;
   }
   .advices {
     grid-template-columns: 1fr;
